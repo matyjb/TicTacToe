@@ -4,7 +4,7 @@
 
 Board::Board() {
 	fields = "         ";
-	selectedField = 0;
+	selectedField = 4;
 }
 
 Board::~Board()
@@ -33,10 +33,10 @@ void Board::Draw() {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			if (selectedField == i * 3 + j) {
-				std::cout << '[' << fields[selectedField] << ']';
+				std::cout << '[' << fields[i * 3 + j] << ']';
 			}
 			else {
-				std::cout << ' ' << fields[selectedField] << ' ';
+				std::cout << ' ' << fields[i * 3 + j] << ' ';
 			}
 			if (j != 2) {
 				std::cout << char(186);
