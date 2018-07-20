@@ -49,25 +49,29 @@ void Board::Draw() {
 	}
 }
 void Board::MoveCursorUp() {
-	if (selectedField != 0 || selectedField != 1 || selectedField != 2) {
+	if (selectedField != 0 && selectedField != 1 && selectedField != 2) {
 		selectedField -= 3;
 	}
 }
 void Board::MoveCursorDown() {
-	if (selectedField != 6 || selectedField != 7 || selectedField != 8) {
+	if (selectedField != 6 && selectedField != 7 && selectedField != 8) {
 		selectedField += 3;
 	}
 }
 void Board::MoveCursorLeft() {
-	if (selectedField != 0 || selectedField != 3 || selectedField != 6) {
+	if (selectedField != 0 && selectedField != 3 && selectedField != 6) {
 		selectedField--;
 	}
 }
 void Board::MoveCursorRight() {
-	if (selectedField != 2 || selectedField != 5 || selectedField != 8) {
+	if (selectedField != 2 && selectedField != 5 && selectedField != 8) {
 		selectedField++;
 	}
 }
+void Board::PutCharacterOnSelectedField(char character) {
+	fields[selectedField] = character;
+}
+
 std::string Board::GetFields() {
 	return fields;
 }

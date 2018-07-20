@@ -12,6 +12,7 @@ public:
 	void MoveCursorDown();
 	void MoveCursorLeft();
 	void MoveCursorRight();
+	void PutCharacterOnSelectedField(char);
 	std::string GetFields();
 	bool SetFields(std::string);
 };
