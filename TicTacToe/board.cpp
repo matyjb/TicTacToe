@@ -16,17 +16,18 @@ void Board::ClearBoard() {
 }
 
 char Board::CheckWin() {
-	if (fields[1] == fields[2] && fields[2] == fields[3] && fields[1] != ' ') return fields[1];
-	if (fields[4] == fields[5] && fields[5] == fields[6] && fields[4] != ' ') return fields[4];
-	if (fields[7] == fields[8] && fields[8] == fields[9] && fields[7] != ' ') return fields[7];
+	if (fields[0] == fields[1] && fields[1] == fields[2] && fields[0] != ' ') return fields[0];
+	if (fields[3] == fields[4] && fields[4] == fields[5] && fields[3] != ' ') return fields[3];
+	if (fields[6] == fields[7] && fields[7] == fields[8] && fields[6] != ' ') return fields[6];
 
+	if (fields[0] == fields[3] && fields[3] == fields[6] && fields[0] != ' ') return fields[0];
 	if (fields[1] == fields[4] && fields[4] == fields[7] && fields[1] != ' ') return fields[1];
 	if (fields[2] == fields[5] && fields[5] == fields[8] && fields[2] != ' ') return fields[2];
-	if (fields[3] == fields[6] && fields[6] == fields[9] && fields[3] != ' ') return fields[3];
 
-	if (fields[1] == fields[5] && fields[5] == fields[9] && fields[1] != ' ') return fields[1];
-	if (fields[3] == fields[5] && fields[5] == fields[7] && fields[3] != ' ') return fields[3];
-	return ' ';
+	if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0] != ' ') return fields[0];
+	if (fields[2] == fields[4] && fields[4] == fields[6] && fields[2] != ' ') return fields[2];
+	for (int i = 0; i < 8; i++) if(fields[i] == ' ') return ' ';
+	return 'T';
 }
 
 void Board::Draw() {
@@ -68,8 +69,12 @@ void Board::MoveCursorRight() {
 		selectedField++;
 	}
 }
-void Board::PutCharacterOnSelectedField(char character) {
-	fields[selectedField] = character;
+bool Board::PutCharacterOnSelectedField(char character) {
+	if (fields[selectedField] == ' ') {
+		fields[selectedField] = character;
+		return true;
+	}
+	return false;
 }
 
 std::string Board::GetFields() {
